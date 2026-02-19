@@ -56,7 +56,7 @@ The User Service is a production-ready Spring Boot application built with modern
 ### 1. Clone the Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/prateek-tomar2425/user-service.git
 cd user-service
 ```
 
@@ -270,7 +270,6 @@ During development, Spring Boot DevTools enables automatic restart when files ch
 
 ## License
 
-Specify your license here (e.g., MIT, Apache 2.0, etc.)
 
 ## Support
 
