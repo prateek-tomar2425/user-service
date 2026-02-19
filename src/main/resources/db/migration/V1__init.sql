@@ -1,0 +1,11 @@
+CREATE TABLE users
+(
+    id            UUID         NOT NULL,
+    email         VARCHAR(255) NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    created_at    TIMESTAMP WITHOUT TIME ZONE,
+    CONSTRAINT pk_users PRIMARY KEY (id)
+);
+
+ALTER TABLE users
+    ADD CONSTRAINT uc_users_email UNIQUE (email);
