@@ -25,4 +25,16 @@ public class User {
     private String passwordHash;
 
     private Instant createdAt;
+
+    private Instant updatedAt;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Role role;
+    public enum Role {
+        USER,
+        ADMIN
+    }
+
 }
+

@@ -10,6 +10,7 @@ public class UserMapper {
         return new UserResponse(
                 user.getId(),
                 user.getEmail(),
+                user.getRole().toString(),
                 user.getCreatedAt()
         );
     }

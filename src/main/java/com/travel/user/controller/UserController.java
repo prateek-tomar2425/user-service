@@ -47,6 +47,14 @@ public class UserController {
                 service.getPreferences(id)
         );
     }
+    @GetMapping("/email/{email}")
+    public ResponseEntity<UserResponse> getByEmail(
+            @PathVariable String email) {
+
+        return ResponseEntity.ok(
+                service.getByEmail(email)
+        );
+    }
 
 
 }

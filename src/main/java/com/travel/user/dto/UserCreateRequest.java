@@ -10,5 +10,6 @@ public record UserCreateRequest(
         String email,
 
         @NotBlank
-        String password
+        String password,
+        String role
 ) {}

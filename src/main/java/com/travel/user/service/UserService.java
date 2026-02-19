@@ -11,6 +11,7 @@ public interface UserService {
 
     UserResponse createUser(UserCreateRequest request);
     UserResponse getUser(UUID id);
+    UserResponse getByEmail(String email);
     UserPreferenceResponse updatePreferences(
             UUID userId,
             UserPreferenceRequest request);
