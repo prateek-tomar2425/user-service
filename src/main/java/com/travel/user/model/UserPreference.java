@@ -22,5 +22,14 @@ public class UserPreference {
     private String foodPreference;
     private String travelScope;
 
+    // New fields
+    private String budget;
+
+    @Column(columnDefinition = "TEXT")
+    private String preferredActivities;  // JSON array stored as text
+
+    @Column(columnDefinition = "TEXT")
+    private String preferredDestinations;  // JSON array stored as text
+
     private Instant updatedAt;
 }

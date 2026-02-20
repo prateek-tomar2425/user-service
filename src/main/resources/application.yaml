@@ -26,3 +26,75 @@ spring:
 
 server:
   port: 8081
+
+# Service URLs for inter-service communication
+discovery-service:
+  url: http://localhost:8082
+
+# Feign client configuration
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic
+  compression:
+    request:
+      enabled: true
+      mime-types: application/json,application/xml,text/html,text/xml,text/plain
+      min-request-size: 1024
+
+# Resilience4j configuration
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        slowCallDurationThreshold: 2000ms
+        slowCallRateThreshold: 100
+        failureRateThreshold: 50
+        waitDurationInOpenState: 30000ms
+        permittedNumberOfCallsInHalfOpenState: 3
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        eventConsumerBufferSize: 10
+        recordExceptions:
+          - org.springframework.web.client.HttpServerErrorException
+          - feign.FeignException
+  retry:
+    configs:
+      default:
+        maxAttempts: 3
+        waitDuration: 500ms
+        retryExceptions:
+          - feign.FeignException$ServiceUnavailable
+          - java.net.ConnectException
+
+# Actuator configuration for health checks
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: always
+  health:
+    circuitbreakers:
+      enabled: true
+
+# Internal API key for service-to-service authentication
+internal-api-key: internal-service-key
+
+# JWT Configuration for authentication
+jwt:
+  secret: your-super-secret-key-change-this-in-production
+  expiration: 86400000  # 24 hours in milliseconds
+
+logging:
+  level:
+    org.springframework.web: INFO
+    org.hibernate: WARN
+    com.travel.user: DEBUG
+
