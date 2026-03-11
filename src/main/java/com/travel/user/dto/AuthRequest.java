@@ -14,6 +14,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class AuthRequest {
 
+    // Optional name fields (used during registration, ignored on login)
+    private String firstName;
+    private String lastName;
+
     @NotBlank(message = "Email is required")
     @Email(message = "Email should be valid")
     private String email;

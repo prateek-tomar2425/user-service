@@ -24,6 +24,12 @@ public class User {
     @Column(nullable = false)
     private String passwordHash;
 
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "last_name")
+    private String lastName;
+
     private Instant createdAt;
 
     private Instant updatedAt;
@@ -31,6 +37,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
+
     public enum Role {
         USER,
         ADMIN

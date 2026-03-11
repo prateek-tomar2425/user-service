@@ -80,6 +80,8 @@ public class AuthService {
         user.setId(java.util.UUID.randomUUID());  // Generate UUID for new user
         user.setEmail(request.getEmail());
         user.setPasswordHash(passwordEncoder.encode(request.getPassword()));
+        user.setFirstName(request.getFirstName());
+        user.setLastName(request.getLastName());
         user.setRole(role);
         user.setCreatedAt(java.time.Instant.now());
         user.setUpdatedAt(java.time.Instant.now());
@@ -92,6 +94,8 @@ public class AuthService {
         return AuthResponse.builder()
                 .userId(savedUser.getId())
                 .email(savedUser.getEmail())
+                .firstName(savedUser.getFirstName())
+                .lastName(savedUser.getLastName())
                 .token(token)
                 .expiresIn(jwtExpiration)
                 .message(role == User.Role.ADMIN ? "Admin user registered successfully" : "User registered successfully")
@@ -118,6 +122,8 @@ public class AuthService {
         return AuthResponse.builder()
                 .userId(user.getId())
                 .email(user.getEmail())
+                .firstName(user.getFirstName())
+                .lastName(user.getLastName())
                 .token(token)
                 .expiresIn(jwtExpiration)
                 .message("Login successful")

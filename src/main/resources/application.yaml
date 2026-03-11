@@ -2,6 +2,9 @@ spring:
   application:
     name: user-service
 
+  main:
+    lazy-initialization: true   # Faster dev startup; beans init on first use
+
   datasource:
     url: jdbc:postgresql://localhost:5432/user_db
     username: postgres
